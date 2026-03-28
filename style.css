@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    position: relative;
+    width: 1200px;
+    margin: auto;
+}
+
+
+/* BOTÃO JOGAR */
+.btn-jogar {
+    position: absolute;
+    padding: 20px 50px;
+    font-size: 30px;   
+    right: 100px;
+    bottom: 310px;
+}
+
+/* BOTÃO COMO JOGAR */
+.btn-como {
+    position: absolute;
+    padding: 20px 50px;
+    font-size: 30px; 
+    right: 100px;
+    bottom: 225px; /* 👈 mais embaixo */
+}
+/* BOTÃO SOBRE */
+.btn-sobre {
+    position: absolute;
+    padding: 20px 50px;
+    font-size: 30px; 
+    right: 95px;
+    bottom: 140px; /* 👈 mais embaixo */
+}
+
+/* ESTILO DOS BOTÕES */
+button {
+    padding: 15px 40px;
+    font-size: 24px;
+    font-weight: bold;
+
+    color: white;
+    background: #ff4da6;
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff66b3;
+    transform: scale(1.05);
+}
+
+
+   

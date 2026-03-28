@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html, body {
+    height: 100%;
+}
+
+/* FUNDO DO SITE */
+body {
+    background-image: url(./img/img_jogoBorda.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* CONTAINER DO JOGO (NOVO - MUITO IMPORTANTE) */
+.game-container {
+    position: relative;
+    width: 1200px;
+    height: 700px;
+
+    /* centraliza o jogo na tela */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* CANVAS */
+canvas {
+    width: 1200px;
+    height: 700px;
+    display: block;
+
+    background: none;
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+}
+
+/* BOTÃO VOLTAR */
+#btn-voltar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+
+    color: white;
+    background: #ff4da6;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: 0.2s;
+
+    /* sombra leve */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#btn-voltar:hover {
+    background: #ff66b3;
+}
+
+#btn-voltar:active {
+    transform: scale(0.97);
+}
+
+#btn-pause {
+    position: absolute;
+    top: 20px;
+    right: 113px; /* um pouco do lado do voltar */
+
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+
+    color: white;
+    background: #ff4da6;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+#logo-img {
+    height: 250px;
+    width: auto;
+}
+
+#container-logo {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
