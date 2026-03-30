@@ -1,21 +1,30 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    background-image: url('./img/img_telaInicial.png');
+    background-size: 1900px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: rgb(186, 186, 186);
+    height: 100vh;
+    overflow: hidden;
+}
 
 .container {
     position: relative;
     width: 1200px;
+    height: 100vh;   /* importante */
     margin: auto;
 }
-
 
 /* BOTÃO JOGAR */
 .btn-jogar {
     position: absolute;
-    padding: 20px 50px;
-    font-size: 30px;   
     right: 100px;
     bottom: 310px;
 }
@@ -23,18 +32,15 @@
 /* BOTÃO COMO JOGAR */
 .btn-como {
     position: absolute;
-    padding: 20px 50px;
-    font-size: 30px; 
     right: 100px;
-    bottom: 225px; /* 👈 mais embaixo */
+    bottom: 235px;
 }
+
 /* BOTÃO SOBRE */
 .btn-sobre {
     position: absolute;
-    padding: 20px 50px;
-    font-size: 30px; 
-    right: 95px;
-    bottom: 140px; /* 👈 mais embaixo */
+    right: 100px;
+    bottom: 159px;
 }
 
 /* ESTILO DOS BOTÕES */
@@ -42,12 +48,10 @@ button {
     padding: 15px 40px;
     font-size: 24px;
     font-weight: bold;
-
     color: white;
     background: #ff4da6;
     border: none;
     border-radius: 12px;
-
     cursor: pointer;
     transition: 0.3s;
 }

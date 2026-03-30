@@ -147,7 +147,7 @@ function game_over() {
     else if (carro1.vida <= 0) {
         jogar = false
         venceu = true
-        vencedor = "JOGADOR 2 VENCEU!"
+        vencedor = "Violeta 💜 VENCEU"
         somFinalTocado = false
 
         motor.pause()
@@ -159,7 +159,7 @@ function game_over() {
     else if (carro2.vida <= 0) {
         jogar = false
         venceu = true
-        vencedor = "JOGADOR 1 VENCEU!"
+        vencedor = "Penelope 💗VENCEU!"
         somFinalTocado = false
 
         motor.pause()
@@ -320,7 +320,7 @@ function vitoria() {
     if (fase === 3 && carro1.pontos >= 60 && carro1.vida > 0) {
         jogar = false
         venceu = true
-        vencedor = "JOGADOR 1 VENCEU!"
+        vencedor = " Penelope 💗 VENCEU!"
         somFinalTocado = false
 
         motor.pause()
@@ -332,7 +332,7 @@ function vitoria() {
     else if (fase === 3 && carro2.pontos >= 60 && carro2.vida > 0) {
         jogar = false
         venceu = true
-        vencedor = "JOGADOR 2 VENCEU!"
+        vencedor = "Violeta 💜 VENCEU!"
         somFinalTocado = false
 
         motor.pause()
@@ -433,8 +433,8 @@ function desenha() {
             t1.des_text('GAME OVER', 410, 260, '#ff4da6', 'bold 50px Arial')
         }
 
-        t2.des_text('Pontos Jogador 1: ' + carro1.pontos, 410, 335, '#7a2c5b', 'bold 24px Arial')
-        t2.des_text('Pontos Jogador 2: ' + carro2.pontos, 410, 380, '#7a2c5b', 'bold 24px Arial')
+        t2.des_text('Pontos Penelope 💗: ' + carro1.pontos, 410, 335, '#7a2c5b', 'bold 24px Arial')
+        t2.des_text('Pontos Violeta 💜: ' + carro2.pontos, 410, 380, '#7a2c5b', 'bold 24px Arial')
         t2.des_text('Pressione ENTER para jogar novamente', 350, 430, '#a14d7a', 'bold 22px Arial')
     }
 }
