@@ -83,10 +83,14 @@ class Carro extends Obj {
     mov_car() {
         this.y += this.dir
 
+        // limite de cima
         if (this.y < 130) {
             this.y = 130
-        } else if (this.y > 424) {
-            this.y = 424
+        }
+
+        // limite de baixo (considerando altura do carro)
+        if (this.y + this.h > 560) {
+            this.y = 560 - this.h
         }
     }
 
@@ -134,10 +138,13 @@ class Carro extends Obj {
 class CarroInimigo extends Obj {
     vel = 3
 
-    recomeca() {
-        this.x = 1300
-        this.y = Math.floor(Math.random() * (400 - 100) + 100)
-    }
+   recomeca() {
+
+    // pode nascer em várias posições à direita
+    this.x = Math.floor(Math.random() * 400 + 1200)
+
+    this.y = Math.floor(Math.random() * (560 - 130 - this.h) + 130)
+}
 
     mov_car() {
         this.x -= this.vel

@@ -9,18 +9,45 @@ let estrada = new Estrada(10, 345, 40, 10)
 let estrada2 = new Estrada(80, 345, 40, 10)
 let estrada3 = new Estrada(140, 345, 40, 10)
 
-let carro1 = new Carro(100, 250, 125, 120, './img/img_jogador1.png')
-let carro2 = new Carro(100, 350, 125, 120, './img/img_jogador2.png')
+let carro1 = new Carro(190, 250, 125, 120, './img/img_jogador1.png')
+let carro2 = new Carro(190, 350, 125, 120, './img/img_jogador2.png')
 
 let t1 = new Text()
 let t2 = new Text()
 let fase_txt = new Text()
 
+// ─── Sons do jogo ────────────────────────────────────────────────────────────
+// motor = som contínuo dos carros
+// batida = som quando bate nos inimigos
+// somDiamante = som quando pega o diamante
+// somVida = som quando pega o coração
+
 let motor = new Audio('./img/motor.wav')
 let batida = new Audio('./img/batida.mp3')
-motor.volume = 0.5
+let somDiamante = new Audio('./img/diamante.mp3')
+let somVida = new Audio('./img/vida.mp3')
+
+
+// volumes ajustados para não ficarem altos demais
+motor.volume = 0.12
 motor.loop = true
-batida.volume = 0.5
+
+batida.volume = 0.1
+somDiamante.volume = 0.4
+somVida.volume = 0.4
+
+let somVitoria = new Audio('./img/vitoria.mp3')
+let somDerrota = new Audio('./img/derrota.mp3')
+
+somVitoria.volume = 0.4
+somDerrota.volume = 0.4
+
+let somFinalTocado = false
+
+// essa variável controla se o motor já está tocando
+// isso evita ficar chamando motor.play() várias vezes
+let motorLigado = false
+
 
 let jogar = true
 let fase = 1
@@ -32,28 +59,46 @@ let vencedor = ""
 // ─── Eventos de teclado ──────────────────────────────────────────────────────
 
 document.addEventListener('keydown', (e) => {
-    motor.play()
 
-    if (e.key === 'w' || e.key === 'W') {
-        carro1.dir -= 10
-    } else if (e.key === 's' || e.key === 'S') {
-        carro1.dir += 10
+    // se o jogo acabou e apertar ENTER, reinicia a página
+    if (!jogar && e.key === 'Enter') {
+        location.reload()
     }
 
-    if (e.key === 'ArrowUp') {
-        carro2.dir -= 10
-    } else if (e.key === 'ArrowDown') {
-        carro2.dir += 10
+    // só movimenta os carros se o jogo estiver rodando e não estiver pausado
+    if (jogar && !pausado) {
+
+        // liga o som do motor só uma vez
+        if (!motorLigado) {
+            motor.play()
+            motorLigado = true
+        }
+
+        // jogador 1 = W e S
+        if (e.key === 'w' || e.key === 'W') {
+            carro1.dir = -10
+        } else if (e.key === 's' || e.key === 'S') {
+            carro1.dir = 10
+        }
+
+        // jogador 2 = setas
+        if (e.key === 'ArrowUp') {
+            carro2.dir = -10
+        } else if (e.key === 'ArrowDown') {
+            carro2.dir = 10
+        }
     }
 })
 
 document.addEventListener('keyup', (e) => {
+    // para movimento do jogador 1
     if (e.key === 'w' || e.key === 'W') {
         carro1.dir = 0
     } else if (e.key === 's' || e.key === 'S') {
         carro1.dir = 0
     }
 
+    // para movimento do jogador 2
     if (e.key === 'ArrowUp') {
         carro2.dir = 0
     } else if (e.key === 'ArrowDown') {
@@ -62,6 +107,7 @@ document.addEventListener('keyup', (e) => {
 })
 
 // ─── Função para trocar fundo ────────────────────────────────────────────────
+// troca o cenário conforme a fase atual
 
 function trocarFundo() {
     if (fundoAtual === fase) return
@@ -83,37 +129,52 @@ function trocarFundo() {
 
 // ─── Controle do jogo ────────────────────────────────────────────────────────
 
+// verifica derrota e vitória por eliminação
 function game_over() {
-    // os dois perderam
+
+    // os dois perderam → GAME OVER
     if (carro1.vida <= 0 && carro2.vida <= 0) {
         jogar = false
         venceu = false
+        somFinalTocado = false
+
         motor.pause()
+        motor.currentTime = 0
+        motorLigado = false
     }
 
-    // só o jogador 1 perdeu
+    // jogador 1 morreu → jogador 2 vence
     else if (carro1.vida <= 0) {
         jogar = false
         venceu = true
         vencedor = "JOGADOR 2 VENCEU!"
+        somFinalTocado = false
+
         motor.pause()
+        motor.currentTime = 0
+        motorLigado = false
     }
 
-    // só o jogador 2 perdeu
+    // jogador 2 morreu → jogador 1 vence
     else if (carro2.vida <= 0) {
         jogar = false
         venceu = true
         vencedor = "JOGADOR 1 VENCEU!"
+        somFinalTocado = false
+
         motor.pause()
+        motor.currentTime = 0
+        motorLigado = false
     }
 }
+// muda a fase e aumenta a velocidade dos inimigos
 function ver_fase() {
-    if ((carro1.pontos > 20 || carro2.pontos > 20) && fase === 1) {
+    if ((carro1.pontos >= 20 || carro2.pontos >= 20) && fase === 1) {
         fase = 2
         carroInimigo.vel = 4
         carroInimigo2.vel = 4
         carroInimigo3.vel = 4
-    } else if ((carro1.pontos > 40 || carro2.pontos > 40) && fase === 2) {
+    } else if ((carro1.pontos >= 40 || carro2.pontos >= 40) && fase === 2) {
         fase = 3
         carroInimigo.vel = 6
         carroInimigo2.vel = 6
@@ -121,50 +182,55 @@ function ver_fase() {
     }
 }
 
+// verifica colisão com inimigos
 function colisao() {
-    if (carro1.colid(carroInimigo)) {
+    if (carro1.vida > 0 && carro1.colid(carroInimigo)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo.recomeca()
         carro1.vida -= 1
     }
 
-    if (carro1.colid(carroInimigo2)) {
+    if (carro1.vida > 0 && carro1.colid(carroInimigo2)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo2.recomeca()
         carro1.vida -= 1
     }
 
-    if (carro1.colid(carroInimigo3)) {
+    if (carro1.vida > 0 && carro1.colid(carroInimigo3)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo3.recomeca()
         carro1.vida -= 1
     }
 
-    if (carro2.colid(carroInimigo)) {
+    if (carro2.vida > 0 && carro2.colid(carroInimigo)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo.recomeca()
         carro2.vida -= 1
     }
 
-    if (carro2.colid(carroInimigo2)) {
+    if (carro2.vida > 0 && carro2.colid(carroInimigo2)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo2.recomeca()
         carro2.vida -= 1
     }
 
-    if (carro2.colid(carroInimigo3)) {
+    if (carro2.vida > 0 && carro2.colid(carroInimigo3)) {
+        batida.currentTime = 0
         batida.play()
         carroInimigo3.recomeca()
         carro2.vida -= 1
     }
-
-    console.log('vida jogador 1: ', carro1.vida)
-    console.log('vida jogador 2: ', carro2.vida)
 }
 
+// pontuação dos inimigos que saem da tela
+// cada inimigo que passa dá ponto para os dois jogadores que ainda estiverem vivos
 function pontuacao() {
     if (carroInimigo.x <= -100) {
-
         if (carro1.vida > 0) {
             carro1.pontos += 5
         }
@@ -177,7 +243,6 @@ function pontuacao() {
     }
 
     if (carroInimigo2.x <= -100) {
-
         if (carro1.vida > 0) {
             carro1.pontos += 5
         }
@@ -190,7 +255,6 @@ function pontuacao() {
     }
 
     if (carroInimigo3.x <= -100) {
-
         if (carro1.vida > 0) {
             carro1.pontos += 5
         }
@@ -203,49 +267,79 @@ function pontuacao() {
     }
 }
 
-
+// powerups
 function powerups() {
-    if (carro1.colid(powerVida)) {
+
+    // coração = ganha vida
+    if (carro1.vida > 0 && carro1.colid(powerVida)) {
         if (carro1.vida < 5) {
             carro1.vida += 1
+
+            // toca som da vida
+            somVida.currentTime = 0
+            somVida.play()
         }
         powerVida.recomeca()
     }
 
-    if (carro2.colid(powerVida)) {
+    if (carro2.vida > 0 && carro2.colid(powerVida)) {
         if (carro2.vida < 5) {
             carro2.vida += 1
+
+            somVida.currentTime = 0
+            somVida.play()
         }
         powerVida.recomeca()
     }
 
-    if (carro1.colid(powerPonto)) {
+    // diamante = ganha pontos
+    if (carro1.vida > 0 && carro1.colid(powerPonto)) {
         carro1.pontos += 10
+
+        somDiamante.currentTime = 0
+        somDiamante.play()
+
         powerPonto.recomeca()
     }
 
-    if (carro2.colid(powerPonto)) {
+    if (carro2.vida > 0 && carro2.colid(powerPonto)) {
         carro2.pontos += 10
+
+        somDiamante.currentTime = 0
+        somDiamante.play()
+
         powerPonto.recomeca()
     }
 }
 
+// vitória por pontuação final
+// só vence se estiver na fase 3 e com pelo menos 1 vida
 function vitoria() {
-    if (carro1.pontos >= 100) {
+
+    // jogador 1 vence
+    if (fase === 3 && carro1.pontos >= 60 && carro1.vida > 0) {
         jogar = false
         venceu = true
         vencedor = "JOGADOR 1 VENCEU!"
+        somFinalTocado = false
+
         motor.pause()
+        motor.currentTime = 0
+        motorLigado = false
     }
 
-    if (carro2.pontos >= 100) {
+    // jogador 2 vence
+    else if (fase === 3 && carro2.pontos >= 60 && carro2.vida > 0) {
         jogar = false
         venceu = true
         vencedor = "JOGADOR 2 VENCEU!"
+        somFinalTocado = false
+
         motor.pause()
+        motor.currentTime = 0
+        motorLigado = false
     }
 }
-
 // ─── Desenho ─────────────────────────────────────────────────────────────────
 
 function desenha() {
@@ -253,94 +347,115 @@ function desenha() {
         carroInimigo.des_carro()
         carroInimigo2.des_carro()
         carroInimigo3.des_carro()
-        carro1.des_carro()
-        carro2.des_carro()
+
+        if (carro1.vida > 0) {
+            carro1.des_carro()
+        }
+
+        if (carro2.vida > 0) {
+            carro2.des_carro()
+        }
+
         powerVida.des_carro()
         powerPonto.des_carro()
 
-        // ===== HUD PRINCIPAL =====
-
-        // fundo da HUD (mais largo pra caber tudo)
-       des.fillStyle = 'rgba(255, 192, 203, 0.22)'
+        // HUD
+        des.fillStyle = 'rgba(255, 192, 203, 0.22)'
         des.fillRect(12, 12, 1080, 44)
 
-        // borda
         des.strokeStyle = 'rgba(255, 255, 255, 0.45)'
         des.lineWidth = 1.5
         des.strokeRect(12, 12, 1080, 44)
 
-        // divisórias (organiza visualmente)
         des.beginPath()
         des.strokeStyle = 'rgba(255, 255, 255, 0.25)'
-
-        // separa P1
         des.moveTo(230, 18)
         des.lineTo(230, 50)
-
-        // separa P2
         des.moveTo(470, 18)
         des.lineTo(470, 50)
-
-        // separa fase (lado direito)
         des.moveTo(890, 18)
         des.lineTo(890, 50)
-
         des.stroke()
 
-        // sombra leve
         des.shadowColor = 'rgba(0, 0, 0, 0.20)'
         des.shadowBlur = 4
 
-        // ===== JOGADOR 1 =====
         let vidasHUD1 = '💗'.repeat(carro1.vida)
-
         t2.des_text('P1 ' + vidasHUD1, 25, 41, '#ffffff', 'bold 18px Arial')
         t1.des_text('💎 ' + carro1.pontos, 173, 41, '#ffffff', 'bold 18px Arial')
 
-        // ===== JOGADOR 2 =====
         let vidasHUD2 = '💗'.repeat(carro2.vida)
-
         t2.des_text('P2 ' + vidasHUD2, 260, 41, '#ffffff', 'bold 18px Arial')
         t1.des_text('💎 ' + carro2.pontos, 410, 41, '#ffffff', 'bold 18px Arial')
 
-        // ===== FASE (lado direito, longe da logo) =====
         fase_txt.des_text('👑 Fase ' + fase, 900, 41, '#ffffff', 'bold 18px Arial')
 
-        // tira sombra
         des.shadowBlur = 0
+
         if (pausado) {
             des.fillStyle = 'rgba(0, 0, 0, 0.35)'
             des.fillRect(0, 0, 1200, 700)
 
             des.fillStyle = 'white'
             des.font = 'bold 60px Arial'
-            des.fillText('PAUSADO', 470, 350)
+            des.fillText('PAUSADO', 420, 360)
         }
 
-  } else {
-    if (venceu) {
-        t1.des_text(vencedor, 300, 350, '#ff4da6', '60px Arial')
     } else {
-        t1.des_text('GAME OVER', 420, 350, '#ff4da6', '60px Arial')
-    }
 
-    t2.des_text('P1: ' + carro1.pontos, 500, 410, '#ff4da6', '25px Arial')
-    t2.des_text('P2: ' + carro2.pontos, 500, 450, '#ff4da6', '25px Arial')
-}
+        // 🔊 SOM FINAL (CORRETO)
+        if (!somFinalTocado) {
+            if (venceu) {
+                somVitoria.currentTime = 0
+                somVitoria.play()
+            } else {
+                somDerrota.currentTime = 0
+                somDerrota.play()
+            }
+
+            somFinalTocado = true
+        }
+
+        // tela final
+        des.fillStyle = 'rgba(0, 0, 0, 0.45)'
+        des.fillRect(0, 0, 1200, 700)
+
+        des.fillStyle = 'rgba(255, 240, 245, 0.95)'
+        des.fillRect(300, 180, 600, 260)
+
+        des.strokeStyle = '#ff4da6'
+        des.lineWidth = 4
+        des.strokeRect(300, 180, 600, 260)
+
+        if (venceu) {
+            t1.des_text(vencedor, 340, 260, '#ff4da6', 'bold 42px Arial')
+        } else {
+            t1.des_text('GAME OVER', 410, 260, '#ff4da6', 'bold 50px Arial')
+        }
+
+        t2.des_text('Pontos Jogador 1: ' + carro1.pontos, 410, 335, '#7a2c5b', 'bold 24px Arial')
+        t2.des_text('Pontos Jogador 2: ' + carro2.pontos, 410, 380, '#7a2c5b', 'bold 24px Arial')
+        t2.des_text('Pressione ENTER para jogar novamente', 350, 430, '#a14d7a', 'bold 22px Arial')
+    }
 }
 
 // ─── Atualização ─────────────────────────────────────────────────────────────
 
 function atualiza() {
     if (jogar) {
-        carro1.mov_car()
-        carro2.mov_car()
+        if (carro1.vida > 0) {
+            carro1.mov_car()
+        }
+
+        if (carro2.vida > 0) {
+            carro2.mov_car()
+        }
+
         carroInimigo.mov_car()
         carroInimigo2.mov_car()
         carroInimigo3.mov_car()
         powerVida.mov_car()
         powerPonto.mov_car()
-        vitoria()
 
         estrada.mov_est()
         estrada2.mov_est()
@@ -349,8 +464,9 @@ function atualiza() {
         colisao()
         pontuacao()
         ver_fase()
-        game_over()
         powerups()
+        game_over()
+        vitoria()
     }
 }
 
@@ -375,6 +491,7 @@ function voltarMenu() {
     }
 }
 
+// pausa e despausa o jogo
 function pausar() {
     pausado = !pausado
 
@@ -382,13 +499,11 @@ function pausar() {
 
     if (pausado) {
         botao.innerText = "▶"
+        motor.pause()
+        motorLigado = false
     } else {
         botao.innerText = "⏸"
     }
-}
-
-if (!jogar) {
-    t1.des_text("PAUSADO", 500, 350, "white", "40px Arial")
 }
 
 main()
