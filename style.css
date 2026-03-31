@@ -4,16 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url('./img/img_telaInicial.png');
-    background-size: 1900px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: rgb(186, 186, 186);
-    height: 100vh;
-    overflow: hidden;
-}
+
 
 .container {
     position: relative;
@@ -26,21 +17,21 @@ body {
 .btn-jogar {
     position: absolute;
     right: 100px;
-    bottom: 310px;
+    bottom: 1350px;
 }
 
 /* BOTÃO COMO JOGAR */
 .btn-como {
     position: absolute;
     right: 100px;
-    bottom: 235px;
+    bottom: 1280px;
 }
 
 /* BOTÃO SOBRE */
 .btn-sobre {
     position: absolute;
     right: 100px;
-    bottom: 159px;
+    bottom: 1210px;
 }
 
 /* ESTILO DOS BOTÕES */

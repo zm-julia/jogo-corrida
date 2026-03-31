@@ -169,12 +169,12 @@ function game_over() {
 }
 // muda a fase e aumenta a velocidade dos inimigos
 function ver_fase() {
-    if ((carro1.pontos >= 20 || carro2.pontos >= 20) && fase === 1) {
+    if ((carro1.pontos >= 200 || carro2.pontos >= 200) && fase === 1) {
         fase = 2
         carroInimigo.vel = 4
         carroInimigo2.vel = 4
         carroInimigo3.vel = 4
-    } else if ((carro1.pontos >= 40 || carro2.pontos >= 40) && fase === 2) {
+    } else if ((carro1.pontos >= 400 || carro2.pontos >= 400) && fase === 2) {
         fase = 3
         carroInimigo.vel = 6
         carroInimigo2.vel = 6
@@ -317,7 +317,7 @@ function powerups() {
 function vitoria() {
 
     // jogador 1 vence
-    if (fase === 3 && carro1.pontos >= 60 && carro1.vida > 0) {
+    if (fase === 3 && carro1.pontos >= 600 && carro1.vida > 0) {
         jogar = false
         venceu = true
         vencedor = " Penelope 💗 VENCEU!"
@@ -329,7 +329,7 @@ function vitoria() {
     }
 
     // jogador 2 vence
-    else if (fase === 3 && carro2.pontos >= 60 && carro2.vida > 0) {
+    else if (fase === 3 && carro2.pontos >= 600 && carro2.vida > 0) {
         jogar = false
         venceu = true
         vencedor = "Violeta 💜 VENCEU!"

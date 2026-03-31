@@ -62,3 +62,21 @@ button:hover {
     background: #ff66b3;
     transform: scale(1.05);
 }
+
+.redes-sociais {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.redes-sociais img {
+  width: 40px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.1s;
+}
+
+.redes-sociais img:hover {
+  transform: scale(1.15);
+}
