@@ -84,13 +84,13 @@ class Carro extends Obj {
         this.y += this.dir
 
         // limite de cima
-        if (this.y < 130) {
-            this.y = 130
+        if (this.y < 80) {
+            this.y = 80
         }
 
         // limite de baixo (considerando altura do carro)
-        if (this.y + this.h > 560) {
-            this.y = 560 - this.h
+        if (this.y + this.h > 620) {
+            this.y = 620 - this.h
         }
     }
 

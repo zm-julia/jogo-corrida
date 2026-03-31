@@ -4,38 +4,39 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(./img/img_telaInicial4.png);
+    background-size: cover;          /* Faz a imagem cobrir a tela toda */
+    background-position: center;     /* Centraliza a imagem */
+    background-repeat: no-repeat;    /* Impede que a imagem se repita */
+    background-attachment: fixed;    /* Deixa o fundo fixo ao rolar */
+    color: rgb(186, 186, 186);
+}
 
-
-.container {
+.container{
     position: relative;
-    width: 1200px;
-    height: 100vh;   /* importante */
-    margin: auto;
 }
 
-/* BOTÃO JOGAR */
 .btn-jogar {
-    position: absolute;
-    right: 100px;
-    bottom: 1350px;
+    top: 625px;
+    left: 1300px;
 }
 
-/* BOTÃO COMO JOGAR */
 .btn-como {
-    position: absolute;
-    right: 100px;
-    bottom: 1280px;
+    top: 690px;
+    left: 1300px;
 }
 
-/* BOTÃO SOBRE */
 .btn-sobre {
-    position: absolute;
-    right: 100px;
-    bottom: 1210px;
-}
+    top: 755px;
+    left: 1300px;
+} 
 
 /* ESTILO DOS BOTÕES */
 button {
+    position: absolute;
     padding: 15px 40px;
     font-size: 24px;
     font-weight: bold;
@@ -50,7 +51,4 @@ button {
 button:hover {
     background: #ff66b3;
     transform: scale(1.05);
-}
-
-
-   
+}  
