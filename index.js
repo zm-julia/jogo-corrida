@@ -171,9 +171,9 @@ function game_over() {
 function ver_fase() {
     if ((carro1.pontos >= 200 || carro2.pontos >= 200) && fase === 1) {
         fase = 2
-        carroInimigo.vel = 4
-        carroInimigo2.vel = 4
-        carroInimigo3.vel = 4
+        carroInimigo.vel = 15
+        carroInimigo2.vel = 15
+        carroInimigo3.vel = 15
     } else if ((carro1.pontos >= 400 || carro2.pontos >= 400) && fase === 2) {
         fase = 3
         carroInimigo.vel = 6
