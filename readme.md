@@ -172,7 +172,7 @@ Utilização de requestAnimationFrame para manter fluidez (~60 FPS)
 
 🔽 1. Clonar o repositório
 
-git clone https://github.com/luizamichielinreinhardt/Jogo_2026.git
+git clone https://github.com/zm-julia/jogo-corrida
 
 📂 2. Acessar a pasta
 
