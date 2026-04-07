@@ -1,199 +1,233 @@
-💖 Fast & Fabulous
+# 💖 Fast & Fabulous
 
-![imagem](./img/img_telaInicial.png)
+![Fast & Fabulous](./img/img_telaInicial.png)
 
-👩‍💻 Desenvolvedora
+---
 
-Julia Monteiro
+## 👩‍💻 Desenvolvedora
+Julia Monteiro  
 
-👨‍🏫 Product Owner
+## 👨‍🏫 Product Owner
+Carlos Roberto da Silva Filho  
 
-Carlos Roberto da Silva Filho
+---
 
-🎮 Visão Geral do Sistema
+## 🎮 Visão Geral do Sistema
 
-📌 Descrição
+### 📌 Descrição
+Fast & Fabulous é um jogo de corrida 2D desenvolvido com **HTML, CSS e JavaScript**, utilizando a **Canvas API** para renderização gráfica.
 
-Fast & Fabulous é um jogo de corrida 2D desenvolvido com JavaScript, HTML e CSS, utilizando a Canvas API para renderização dos elementos gráficos.
+O jogo oferece uma experiência dinâmica onde dois jogadores competem simultaneamente em uma pista estilizada, desviando de obstáculos e coletando itens ao longo das fases.
 
-O jogo apresenta uma experiência dinâmica e envolvente, onde o jogador controla um carro em uma pista estilizada, desviando de obstáculos e coletando itens ao longo do percurso.
+---
 
-🎯 Objetivo
+### 🎯 Objetivo
+Sobreviver às três fases do jogo, desviando dos inimigos, coletando itens e acumulando pontos até alcançar a vitória final.
 
-O objetivo do jogo é sobreviver às três fases consecutivas, desviando dos inimigos, coletando itens e acumulando pontos até alcançar a vitória final.
+---
 
-🎨 Tema
+### 🎨 Tema
+O jogo possui um estilo visual inspirado na **Penélope Charmosa** e no desenho **Corrida Maluca**, com estética clean, moderna e vibrante, utilizando tons de rosa, lilás e elementos visuais do universo de corrida.
 
-O jogo possui um estilo visual inspirado na Penélope Charmosa e no desenho Corrida Maluca, com uma estética clean, moderna e vibrante, baseada em tons de rosa e lilás, além de elementos visuais relacionados ao universo de corrida.
+---
 
-🕹️ Instruções de Jogabilidade
+## 🕹️ Instruções de Jogabilidade
 
-🎮 Controles
+### 🎮 Controles
 
-W / ↑ → mover para cima
+👑 **Jogadora 1 (Penelope)**  
+W → subir  
 
-S / ↓ → mover para baixo
+S → descer  
 
-🎯 Objetivo do jogador
+💜 **Jogadora 2 (Violeta)**  
+↑ → subir  
 
-Desviar dos carros inimigos
+↓ → descer  
 
-Coletar itens ao longo da pista
+---
 
-Sobreviver o máximo possível
+### 🎯 Objetivo do jogador
+- Desviar dos carros inimigos  
 
-Completar as 3 fases do jogo
+- Coletar itens ao longo da pista 
 
-💡 Coletáveis
+- Sobreviver o maior tempo possível
 
-💎 Diamante → aumenta a pontuação
+- Completar as 3 fases do jogo  
 
-💖 Coração → recupera vidas
+---
 
-⚙️ Especificações Técnicas
+### 💡 Coletáveis
+💎 Diamante → aumenta a pontuação  
 
-O projeto foi desenvolvido utilizando conceitos fundamentais de programação:
+💖 Coração → recupera vidas  
 
-Programação Orientada a Objetos (POO)
+---
 
-Animação com requestAnimationFrame
+## ⚙️ Especificações Técnicas
 
-Renderização com Canvas API
- 
-Sistema de colisão
+O projeto foi desenvolvido utilizando:
 
-Manipulação de eventos do teclado
+- Programação Orientada a Objetos (POO)  
 
-🧠 Mecânicas do Jogo
+- Canvas API para renderização  
 
-Movimento contínuo do cenário
+- requestAnimationFrame para animação  
 
-Sistema de colisão
+- Sistema de colisão  
 
-Sistema de vidas
+- Manipulação de eventos do teclado  
 
-Sistema de pontuação
+---
 
-Coletáveis (power-ups)
+## 🧠 Mecânicas do Jogo
 
-Progressão por fases
+- Movimento dos jogadores  
 
-Tela de vitória e Game Over
+- Sistema de colisão  
 
-🏁 Regras de Negócio
+- Sistema de vidas  
 
-Baseado no documento do projeto :
+- Sistema de pontuação  
 
-O jogador deve controlar o veículo para desviar de obstáculos e inimigos
+- Coletáveis (power-ups)  
 
-Deve ser possível coletar itens que aumentam a pontuação ou recuperam vidas
+- Progressão por fases  
 
-O jogo possui 3 fases distintas
+- Aumento de dificuldade  
 
-A dificuldade aumenta progressivamente ao longo das fases
+- Tela de vitória e Game Over  
 
-O jogador vence ao completar a terceira fase com pelo menos 1 vida restante
+---
 
-📋 Requisitos Funcionais
+## 🏁 Regras de Negócio
 
-RF01 - Movimentação: Controle do jogador nos eixos do jogo
+RN01 – O jogo possui três fases progressivas  
 
-RF02 - Sistema de Vidas: Perda de vida ao colidir com inimigos
+RN02 – A velocidade dos inimigos aumenta conforme a fase  
 
-RF03 - Pontuação: Sistema de pontuação ativo
+RN03 – Cada jogador possui até 5 vidas  
 
-RF04 - Coletáveis: Itens que aumentam pontos ou vidas
+RN04 – O jogador perde vida ao colidir com inimigos  
 
-RF05 - Progressão de Fases: Transição automática entre fases
+RN05 – O jogador recupera vida ao coletar coração  
 
-RF06 - Interface:
+RN06 – O jogador ganha pontos ao coletar diamantes  
 
-Menu inicial
+RN07 – A troca de fase ocorre automaticamente conforme a pontuação  
 
-Tela de jogo
+RN08 – O jogo termina quando:
+- ambos os jogadores perdem todas as vidas  
 
-Tela "Como Jogar"
+- ou quando apenas um jogador permanece com vida  
 
-Tela "Sobre"
+RN09 – O jogador vence ao alcançar a fase final com pelo menos 1 vida  
 
-Tela de vitória e derrota
+---
 
-🔄 Regras de Negócio do Sistema
+## 📋 Requisitos Funcionais
 
-RN01 (Dificuldade Progressiva): A velocidade dos inimigos aumenta a cada fase
+RF01 – Movimentação dos jogadores nos eixos verticais  
 
-RN02 (Troca de Cenário): Cada fase apresenta um cenário diferente
+RF02 – Detecção de colisão com inimigos  
 
-RN03 (Vitória): O jogador vence apenas ao completar todas as fases com vidas restantes
+RF03 – Sistema de vidas  
 
-RN04 (Manual): O jogo possui uma tela explicando as instruções de uso
+RF04 – Sistema de pontuação  
 
-⚡ Requisitos Não Funcionais
+RF05 – Sistema de coleta de itens  
 
-Desenvolvido em JavaScript
+RF06 – Progressão automática entre fases  
 
-Executado diretamente no navegador (HTML)
+RF07 – Exibição de HUD (vidas, pontos e fase)  
 
-Interface otimizada para resolução máxima 1920x1080
+RF08 – Interface com telas:
 
-Utilização de requestAnimationFrame para manter fluidez (~60 FPS)
+- Menu inicial  
 
-🧱 Estrutura do Projeto
+- Jogo  
 
-📦 Fast & Fabulous
+- Como Jogar  
 
-┣ 📂 img
+- Sobre  
 
-┣ 📂 models
+- Vitória  
 
-┃ ┗ 📄 Carro.js
+- Game Over  
 
-┣ 📄 index.html
+---
 
-┣ 📄 jogo.html
+## ⚡ Requisitos Não Funcionais
 
-┣ 📄 jogo2.html
+RNF01 – Execução em navegador web  
 
-┣ 📄 comoJogar.html
+RNF02 – Fluidez de animação (~60 FPS)  
 
-┣ 📄 sobre.html
+RNF03 – Interface clara e organizada  
 
-┣ 📄 style.css
+RNF04 – Código estruturado em HTML, CSS e JavaScript  
 
-┣ 📄 jogo.css
+RNF05 – Baixo tempo de carregamento  
 
-┣ 📄 jogo2.css
+RNF06 – Uso da Canvas API para renderização  
 
-┣ 📄 jogo2.js
+---
 
-┣ 📄 index.js
+## 🧱 Estrutura do Projeto
 
-🚀 Como Executar o Projeto
+```text
+jogo-corrida/
+├── diagramas_uml/
+├── img/
+├── models/
+│   └── Carro.js
+├── index.html
+├── index.js
+├── jogo.html
+├── jogo.css
+├── comoJogar.html
+├── comoJogar.css
+├── sobre.html
+├── sobre.css
+├── style.css
+├── readme.md
+```
 
-🔽 1. Clonar o repositório
+---
 
+## 🚀 Como Executar o Projeto
+
+### 1. Clonar o repositório
+```bash
 git clone https://github.com/zm-julia/jogo-corrida
+```
 
-📂 2. Acessar a pasta
+### 2. Acessar a pasta
+```bash
+cd jogo-corrida
+```
 
-cd Fast-Fabulous
+### 3. Executar o projeto
+Abra o arquivo **index.html** em um navegador
 
-▶️ 3. Executar o projeto
+---
 
-Abra o arquivo index.html em um navegador
+## 🌐 Acesso Online
 
-🌐 Acesso ao Projeto Online
+🔗 https://jogo-corrida-two.vercel.app/
 
-👉 https://jogo-corrida-two.vercel.app/
+---
 
-👥 Créditos
+## 👥 Créditos
 
-Desenvolvedora: Julia Monteiro
+Desenvolvedora: Julia Monteiro  
+Product Owner: Carlos Roberto da Silva Filho  
 
-Product Owner: Carlos Roberto da Silva Filho
+---
 
-✨ Considerações Finais
+## ✨ Considerações Finais
 
-O desenvolvimento do Fast & Fabulous permitiu a aplicação prática de conceitos importantes de programação, especialmente relacionados à lógica, orientação a objetos e manipulação gráfica com Canvas.
+O desenvolvimento do Fast & Fabulous permitiu a aplicação prática de conceitos importantes da programação, como lógica, orientação a objetos e manipulação gráfica com Canvas.
 
-O projeto combina design visual atrativo com mecânicas funcionais, resultando em uma experiência de jogo simples, porém dinâmica e envolvente.
+O projeto combina identidade visual atrativa com mecânicas funcionais, resultando em uma experiência de jogo simples, dinâmica e envolvente.

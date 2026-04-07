@@ -5,12 +5,20 @@ let carroInimigo3 = new CarroInimigo(1700, 425, 125, 120, './img/img_fantasmas.p
 let powerVida = new CarroInimigo(1400, 200, 45, 35, './img/img_coracao.png')
 let powerPonto = new CarroInimigo(1600, 400, 60, 60, './img/img_diamante.png')
 
+// velocidade inicial da fase 1
+carroInimigo.vel = 3
+carroInimigo2.vel = 3
+carroInimigo3.vel = 3
+
+powerVida.vel = 2.5
+powerPonto.vel = 2.5
+
 let estrada = new Estrada(10, 345, 40, 10)
 let estrada2 = new Estrada(80, 345, 40, 10)
 let estrada3 = new Estrada(140, 345, 40, 10)
 
-let carro1 = new Carro(190, 250, 125, 120, './img/img_jogador1.png')
-let carro2 = new Carro(190, 350, 125, 120, './img/img_jogador2.png')
+let carro1 = new Carro(190, 180, 125, 120, './img/img_jogador1.png')
+let carro2 = new Carro(190, 420, 125, 120, './img/img_jogador2.png')
 
 let t1 = new Text()
 let t2 = new Text()
@@ -147,7 +155,7 @@ function game_over() {
     else if (carro1.vida <= 0) {
         jogar = false
         venceu = true
-        vencedor = "Violeta 💜 VENCEU"
+        vencedor = "Violeta 💜 VENCEU!"
         somFinalTocado = false
 
         motor.pause()
@@ -167,18 +175,32 @@ function game_over() {
         motorLigado = false
     }
 }
+
 // muda a fase e aumenta a velocidade dos inimigos
 function ver_fase() {
-    if ((carro1.pontos >= 200 || carro2.pontos >= 200) && fase === 1) {
+
+    // FASE 2
+    if ((carro1.pontos >= 150 || carro2.pontos >= 150) && fase === 1) {
         fase = 2
-        carroInimigo.vel = 15
-        carroInimigo2.vel = 15
-        carroInimigo3.vel = 15
-    } else if ((carro1.pontos >= 400 || carro2.pontos >= 400) && fase === 2) {
+
+        carroInimigo.vel = 5
+        carroInimigo2.vel = 5
+        carroInimigo3.vel = 5
+
+        powerVida.vel = 3.5
+        powerPonto.vel = 3.5
+    }
+
+    // FASE 3
+    else if ((carro1.pontos >= 300 || carro2.pontos >= 300) && fase === 2) {
         fase = 3
-        carroInimigo.vel = 6
-        carroInimigo2.vel = 6
-        carroInimigo3.vel = 6
+
+        carroInimigo.vel = 7
+        carroInimigo2.vel = 7
+        carroInimigo3.vel = 7
+
+        powerVida.vel = 4.5
+        powerPonto.vel = 4.5
     }
 }
 
@@ -317,7 +339,7 @@ function powerups() {
 function vitoria() {
 
     // jogador 1 vence
-    if (fase === 3 && carro1.pontos >= 600 && carro1.vida > 0) {
+    if (fase === 3 && carro1.pontos >= 450 && carro1.vida > 0) {
         jogar = false
         venceu = true
         vencedor = " Penelope 💗 VENCEU!"
@@ -329,7 +351,7 @@ function vitoria() {
     }
 
     // jogador 2 vence
-    else if (fase === 3 && carro2.pontos >= 600 && carro2.vida > 0) {
+    else if (fase === 3 && carro2.pontos >= 450 && carro2.vida > 0) {
         jogar = false
         venceu = true
         vencedor = "Violeta 💜 VENCEU!"
@@ -340,6 +362,7 @@ function vitoria() {
         motorLigado = false
     }
 }
+
 // ─── Desenho ─────────────────────────────────────────────────────────────────
 
 function desenha() {

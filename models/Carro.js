@@ -81,19 +81,20 @@ class Carro extends Obj {
     tempo = 0
 
     mov_car() {
-        this.y += this.dir
+    this.y += this.dir
 
-        // limite de cima
-        if (this.y < 80) {
-            this.y = 80
-        }
-
-        // limite de baixo (considerando altura do carro)
-        if (this.y + this.h > 620) {
-            this.y = 620 - this.h
-        }
+    // PENÉLOPE = parte de cima
+    if (this === carro1) {
+        if (this.y < 80) this.y = 80
+        if (this.y > 280) this.y = 280
     }
 
+    // VIOLETA = parte de baixo
+    if (this === carro2) {
+        if (this.y < 300) this.y = 300
+        if (this.y > 500) this.y = 500
+    }
+}
     colid(objeto) {
         let mx = 10
         let my = 30
