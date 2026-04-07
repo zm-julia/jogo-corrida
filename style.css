@@ -7,7 +7,7 @@
 body{
     height: 100vh;
     overflow: hidden;
-    background-image: url(./img/img_telaInicial4.png);
+    background-image: url(./img/img_telaInicial.png);
     background-size: cover;          /* Faz a imagem cobrir a tela toda */
     background-position: center;     /* Centraliza a imagem */
     background-repeat: no-repeat;    /* Impede que a imagem se repita */
