@@ -81,20 +81,25 @@ class Carro extends Obj {
     tempo = 0
 
     mov_car() {
-    this.y += this.dir
+        this.y += this.dir
 
-    // PENÉLOPE = parte de cima
-    if (this === carro1) {
-        if (this.y < 80) this.y = 80
-        if (this.y > 280) this.y = 280
-    }
+        // PENÉLOPE
+        if (this === carro1) {
+            if (modoJogo === 1) {
+                if (this.y < 80) this.y = 80
+                if (this.y > 500) this.y = 500
+            } else {
+                if (this.y < 80) this.y = 80
+                if (this.y > 280) this.y = 280
+            }
+        }
 
-    // VIOLETA = parte de baixo
-    if (this === carro2) {
-        if (this.y < 300) this.y = 300
-        if (this.y > 500) this.y = 500
+        // VIOLETA
+        if (this === carro2) {
+            if (this.y < 295) this.y = 295
+            if (this.y > 500) this.y = 500
+        }
     }
-}
     colid(objeto) {
         let mx = 10
         let my = 30
@@ -139,13 +144,13 @@ class Carro extends Obj {
 class CarroInimigo extends Obj {
     vel = 3
 
-   recomeca() {
+    recomeca() {
 
-    // pode nascer em várias posições à direita
-    this.x = Math.floor(Math.random() * 400 + 1200)
+        // pode nascer em várias posições à direita
+        this.x = Math.floor(Math.random() * 400 + 1200)
 
-    this.y = Math.floor(Math.random() * (560 - 130 - this.h) + 130)
-}
+        this.y = Math.floor(Math.random() * (560 - 130 - this.h) + 130)
+    }
 
     mov_car() {
         this.x -= this.vel

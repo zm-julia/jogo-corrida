@@ -17,7 +17,7 @@ Carlos Roberto da Silva Filho
 ### 📌 Descrição
 Fast & Fabulous é um jogo de corrida 2D desenvolvido com **HTML, CSS e JavaScript**, utilizando a **Canvas API** para renderização gráfica.
 
-O jogo oferece uma experiência dinâmica onde dois jogadores competem simultaneamente em uma pista estilizada, desviando de obstáculos e coletando itens ao longo das fases.
+O jogo oferece uma experiência dinâmica onde é possível jogar sozinho ou com dois jogadores simultaneamente em uma pista estilizada, desviando de obstáculos e coletando itens ao longo das fases.
 
 ---
 
@@ -35,12 +35,21 @@ O jogo possui um estilo visual inspirado na **Penélope Charmosa** e no desenho 
 
 ### 🎮 Controles
 
-👑 **Jogadora 1 (Penelope)**  
+👑 **Modo 1 Player (Penélope)**  
 W → subir  
 
 S → descer  
 
-💜 **Jogadora 2 (Violeta)**  
+👑 **Modo 2 Players**
+
+👑 Jogadora 1 (Penélope) 
+
+W → subir  
+
+S → descer  
+
+💜 Jogadora 2 (Violeta)  
+
 ↑ → subir  
 
 ↓ → descer  
@@ -48,17 +57,19 @@ S → descer
 ---
 
 ### 🎯 Objetivo do jogador
+
 - Desviar dos carros inimigos  
 
-- Coletar itens ao longo da pista 
+- Coletar itens ao longo da pista  
 
-- Sobreviver o maior tempo possível
+- Sobreviver até a fase final  
 
 - Completar as 3 fases do jogo  
 
 ---
 
 ### 💡 Coletáveis
+
 💎 Diamante → aumenta a pontuação  
 
 💖 Coração → recupera vidas  
@@ -73,7 +84,7 @@ O projeto foi desenvolvido utilizando:
 
 - Canvas API para renderização  
 
-- requestAnimationFrame para animação  
+- requestAnimationFrame para animação 
 
 - Sistema de colisão  
 
@@ -118,11 +129,18 @@ RN06 – O jogador ganha pontos ao coletar diamantes
 RN07 – A troca de fase ocorre automaticamente conforme a pontuação  
 
 RN08 – O jogo termina quando:
-- ambos os jogadores perdem todas as vidas  
+
+- No modo 1 jogador: o jogador perde todas as vidas  
+
+- No modo 2 jogadores: ambos os jogadores perdem todas as vidas 
 
 - ou quando apenas um jogador permanece com vida  
 
-RN09 – O jogador vence ao alcançar a fase final com pelo menos 1 vida  
+RN09 – Condições de vitória:
+
+- No modo 1 jogador: alcançar a fase final com pelo menos 1 vida  
+
+- No modo 2 jogadores: vencer ao alcançar a fase final primeiro ou permanecer com vida quando o outro jogador for eliminado  
 
 ---
 
@@ -199,17 +217,20 @@ jogo-corrida/
 ## 🚀 Como Executar o Projeto
 
 ### 1. Clonar o repositório
+
 ```bash
 git clone https://github.com/zm-julia/jogo-corrida
 ```
 
 ### 2. Acessar a pasta
+
 ```bash
 cd jogo-corrida
 ```
 
 ### 3. Executar o projeto
-Abra o arquivo **index.html** em um navegador
+
+Abra o arquivo **index.html** em um navegador  
 
 ---
 
@@ -222,6 +243,7 @@ Abra o arquivo **index.html** em um navegador
 ## 👥 Créditos
 
 Desenvolvedora: Julia Monteiro  
+
 Product Owner: Carlos Roberto da Silva Filho  
 
 ---

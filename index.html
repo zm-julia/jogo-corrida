@@ -10,14 +10,25 @@
 </head>
 
 <body>
+    <div class="container">
+        <button class="btn-jogar" onclick="iniciarJogo(1)">1 PLAYER</button>
 
-    <!-- <img src="./img/img_telaInicial2.png" width="1919" height="700"> -->
-        <div class="container">
-            <button class="btn-jogar" onclick="location.href='jogo.html'">JOGAR</button>
+        <button class="btn-jogar2" onclick="iniciarJogo(2)">2 PLAYERS</button>
 
         <button class="btn-como" onclick="location.href='comoJogar.html'">COMO JOGAR</button>
 
         <button class="btn-sobre" onclick="location.href='sobre.html'">SOBRE</button>
-        </div>
+
+
+
+    </div>
+
+    <script>
+        function iniciarJogo(modo) {
+            localStorage.setItem("modoJogo", modo)
+            location.href = "jogo.html"
+        }
+    </script>
 </body>
+
 </html>

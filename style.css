@@ -20,8 +20,14 @@ body{
 }
 
 .btn-jogar {
-    top: 625px;
+    top: 560px;
     left: 1300px;
+}
+
+.btn-jogar2{
+   top: 625px;
+   left: 1300px;
+
 }
 
 .btn-como {
